@@ -1,8 +1,9 @@
 <?php 
-error_reporting(-1);
+
 session_start();
 require ('db.php');
 include('head.php');
+if (isset($_SESSION['login'])){
 $seansid = $_GET['seansid'];
 $seansSQL = "SELECT filmy.tytul as tytul, data, godzina, miejsc FROM seans JOIN filmy ON filmy.id = seans.id_film WHERE  seans.id = $seansid";
 $result = mysql_query($seansSQL);
@@ -35,6 +36,15 @@ if (isset($_POST['seat_save']))
 			}
 		}
 		echo "<br>Wybrane miejsca zostały zarezerwowane: ". $seatNumber;
+
+		require('src/fpdf.php');
+
+$pdf = new FPDF();
+$pdf->AddPage();
+$pdf->SetFont('Arial','B',16);
+$pdf->Cell(0,5, 'Rezerwacja biletow');
+$pdf->Output('rezerwacja_#a.pdf','F');
+
 	}
 else {
 
@@ -109,7 +119,7 @@ else {
 							<button type="reset" class="btn">
 								Wyczyść
 							</button>
-							<a href="./index.php" class="btn btn-danger"> Wróć </a>
+							
 						</center>
 					</form>
 
@@ -132,4 +142,8 @@ else {
 			}
 		</script>
 
-<?php } ?>
+<?php }} else{
+	include('login.php');
+}
+
+?>

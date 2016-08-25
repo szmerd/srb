@@ -1,11 +1,13 @@
 body {
     background: #000;
     color:#fff;
+    
 }
 
 .login {
     height: 50px;
     float: right;
+    color:#fff;
 }
 
 .search {
@@ -33,6 +35,9 @@ thead tr {
 
 tbody tr {
     text-align: center;
+}
+span{
+    color:#fff;
 }
 
 #panel .menu ul {
@@ -90,4 +95,11 @@ ul.thumbnails{
 ul.thumbnails .span1{
     width:80px;
     
+}
+.movies{
+    margin-top:150px;
+}
+.reserv{
+        z-index: 2;
+    position: absolute !important;
 }

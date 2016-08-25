@@ -2,7 +2,7 @@
 
 class Database {
 
-    var $host="localhost";
+    var $host="localhost:666";
     var $username="root";    
     Var $password="root";
     var $database="srb_db";

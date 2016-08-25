@@ -1,7 +1,4 @@
 <?php
-$n=new Database();
-$n->connect();
-$n->db();
 
 $fr_query = "SELECT * FROM filmy";
 
@@ -23,9 +20,49 @@ foreach ($movies as $movie)
   <div class='col-md-12'>
   <span><?php echo $tytul; ?></span>
   </div>
-  <div class='col-md-12'>
-  <a class="btn" href="reservation.php?seansid=<?php echo $id; ?>">rezerwuj</a>
+  <div class='col-md-12'><button class='show btn-primary' id='<?php echo $id; ?>'>Seanse</button></div>
+  <div class='reserv reservations_<?php echo $id; ?> col-md-12 '  style='display:none'>
+ <?php 
+$seans_query = "SELECT * FROM seans WHERE id_film = $id";
+$seanse = $m->fetchAll($seans_query);
+foreach ($seanse as $seans)
+{
+  $seansID = $seans['id'];
+  $data = $seans['data'];
+  $godzina = $seans['godzina'];
+  echo '<button class="opener btn-default" id="'.$seansID.'">'.$data.'<br>'.$godzina.'</button></br>';
+}
+ ?>
   </div>
 </div>
 
 <?php } ?>
+
+
+<div id="wrapper">
+
+</div>
+
+<script type="text/javascript">
+$('.show').click(function(){
+  $('.reservations_'+this.id).toggle();
+})
+$(function () {
+var opt = {
+    autoOpen: false,
+    title: 'Rezerwacja',
+    position: 'center' ,
+    width : 1100,
+    height : 800, 
+    resizable : false,
+    modal : true,
+};
+$('.opener').click(function() {
+  
+        $("#wrapper").html("<iframe width='100%' height='800' frameborder='0' scrolling='yes' marginheight='0' marginwidth='0' src='reservation.php?seansid="+this.id+"''></iframe>");  
+
+        $("#wrapper").dialog(opt).dialog("open");
+
+});
+});
+</script>
