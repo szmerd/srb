@@ -3,11 +3,11 @@ session_start();
  require('db.php');
  $what = $_GET["menu"];
  $filmid = $_GET["filmid"];
+  $rezid = $_GET["rezID"];
+   include('head.php');
  ?>
 
- <head>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-</head>
+
 <body>
 <div id="main">
    <?php  
@@ -68,7 +68,7 @@ echo "<a href='logout.php'>[wyloguj]</a>";
 
 	<div id="selected-content">
 	<?php  include "admin/".$what.".php"; ?>
-	<?php  if($filmid != NULL){ include "admin/edit_movie.php";} ?>
+	<?php  if($filmid != NULL){ include "admin/edit_movie.php";} elseif($rezid != NULL){ include "admin/edit_reservation.php"; } ?>
 	</div>
 </div>
  
