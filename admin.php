@@ -5,6 +5,7 @@ session_start();
  $filmid = $_GET["filmid"];
   $rezid = $_GET["rezID"];
    include('head.php');
+   require('class.php');
  ?>
 
 
@@ -29,7 +30,10 @@ if (isset($_SESSION['login'])){
 $login = $_SESSION['login'];
 echo "Witaj, " . $login . "
 ";
-echo "<a href='logout.php'>[wyloguj]</a>";
+echo "<a href='index.php?logout=true'>[wyloguj]</a>";
+ if (isset($_GET['logout'])) {
+    wyloguj();
+  }
  
 }else{
 ?>

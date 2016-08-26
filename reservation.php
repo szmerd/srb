@@ -12,6 +12,7 @@ while ($row = mysql_fetch_array($result))
 	{
 	$seansDate = $row['data'];
 	$maxSeats = $row['miejsc']+1;
+	$tytulF = $row['tytul'];
 	echo "Wybrałeś seans: " . $row['tytul'] . " w dniu " . $seansDate . " o godzinie " . $row['godzina'];
 	}
 
@@ -37,13 +38,7 @@ if (isset($_POST['seat_save']))
 		}
 		echo "<br>Wybrane miejsca zostały zarezerwowane: ". $seatNumber;
 
-		require('src/fpdf.php');
-
-$pdf = new FPDF();
-$pdf->AddPage();
-$pdf->SetFont('Arial','B',16);
-$pdf->Cell(0,5, 'Rezerwacja biletow');
-$pdf->Output('rezerwacja_#a.pdf','F');
+		include('pdf.php');
 
 	}
 else {

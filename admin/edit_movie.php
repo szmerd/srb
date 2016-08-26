@@ -1,10 +1,10 @@
 <?php
  if(isset($_POST['update'])) {
-    $tytul = $_POST['tytul'];
+   $tytul = $_POST['tytul'];
     $rezyser = $_POST['rezyser'];
     $gatunek = $_POST['gatunekID'];
     $update = "UPDATE filmy SET tytul = '$tytul', rezyser = '$rezyser', gatunek = '$gatunek' WHERE id = '$filmid'" ;
-            mysql_select_db('test_db');
+            mysql_select_db('srb_db');
             $retval = mysql_query( $update, $connection );
             
             if(! $retval ) {
