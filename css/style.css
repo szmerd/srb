@@ -8,6 +8,10 @@ body {
     height: 50px;
     float: right;
     color:#fff;
+    display: inline;
+}
+.login label, .login input, .login p{
+    display: inline !important;
 }
 
 .search {
@@ -97,7 +101,10 @@ ul.thumbnails .span1{
     
 }
 .movies{
-    margin-top:150px;
+    margin-top:20px;
+}
+.movies .col-md-3{
+        height: 320px;
 }
 .reserv{
         z-index: 2;

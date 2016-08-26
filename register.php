@@ -1,14 +1,12 @@
 ﻿<?php
 	require('db.php');
+    require('class.php');
     if (isset($_POST['login']) && isset($_POST['password'])){
         $login = $_POST['login'];
         $password = $_POST['password'];
  
-        $query = "INSERT INTO `klienci` (login, password) VALUES ('$login', '$password')";
-        $result = mysql_query($query);
-        if($result){
-            $msg = "User Created Successfully.";
-        }
+        zarejestruj($login,$password);
+        
     }
     ?>
 <div class="register-form">
